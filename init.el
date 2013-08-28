@@ -20,9 +20,9 @@
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-robin-hood)
-;;; Color theme settings for terminal
+;;; Color theme settings for ansi-term
 (setq term-default-bg-color "#304020")
-(setq term-default-fg-color "#AAAAAA")
+(setq term-default-fg-color "#BBBBBB")
 
 ;;; IDO
 (setq ido-everywhere t)
