@@ -16,7 +16,7 @@
 
 (global-linum-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
-(add-to-list 'load-path "~/.emacs.d/addon-candy/color-theme-6.6.0")
+(add-to-list 'load-path "~/.emacs.d/themes/color-theme-6.6.0")
 (require 'color-theme)
 (color-theme-initialize)
 (color-theme-robin-hood)
