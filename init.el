@@ -34,7 +34,7 @@
 (setq column-number-mode t)
 
 ;;;Set font size to 8pt
-(set-face-attribute 'default nil :height 90)
+(set-face-attribute 'default nil :height 100)
 
 ;;; IDO
 (setq ido-everywhere t)
@@ -66,6 +66,8 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 ;;;(if (fboundp 'menu-bar-mode) (menu-bar-mode -1)) ;;;Keeping this just in case
 
+(load "~/.emacs.d/ess-13.05/lisp/ess-site")
+
 ;;; ORG mode keybindings
 (global-set-key "\C-cl" 'org-store-link)
 (global-set-key "\C-cc" 'org-capture)
@@ -88,6 +90,8 @@
 
 ;;; Get Support for 80 column highlighting
 (require 'column-marker)
+
+(setq mumamo-no-chunk-coloring nil)
 
 ;;; vi like % paren matching
 (defun goto-match-paren (arg)
@@ -134,10 +138,10 @@ vi style of % jumping to matching brace."
 ;;; interfacing with ELPA, the package archive.
 ;;; Move this code earlier if you want to reference
 ;;; packages in your .emacs.
-(when
-    (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
+;;;(when
+;;;    (load
+;;;     (expand-file-name "~/.emacs.d/elpa/package.el"))
+;;;  (package-initialize))
 
 ;;; (require 'package)
 ;;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
@@ -145,18 +149,21 @@ vi style of % jumping to matching brace."
 
 ;;; Customize incantations
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
  '(global-linum-mode t)
  '(js-auto-indent-flag nil)
  '(js-indent-level 2)
  '(org-todo-keywords (quote ((sequence "TODO" "DONE" "SHELVED"))))
- '(ourcomments-ido-ctrl-tab t))
+ '(ourcomments-ido-ctrl-tab t)
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Inconsolata" :foundry "unknown" :slant normal :weight normal :height 98 :width normal)))))
