@@ -17,12 +17,24 @@
 (global-linum-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
 (add-to-list 'load-path "~/.emacs.d/themes/color-theme-6.6.0")
+(add-to-list 'load-path "~/.emacs.d/potpourri")
+
 (require 'color-theme)
 (color-theme-initialize)
-(color-theme-robin-hood)
-;;; Color theme settings for ansi-term
-(setq term-default-bg-color "#304020")
-(setq term-default-fg-color "#BBBBBB")
+(color-theme-goldenrod)
+;;; Color theme settings for ansi-term for robin hood
+;;;(setq term-default-bg-color "#304020")
+;;;(setq term-default-fg-color "#BBBBBB")
+
+;;; term theme for matrix/goldenrod
+(setq term-default-bg-color "#000000")
+(setq term-default-fg-color "#AAAAAA")
+
+;;; Setting column-number-mode by default
+(setq column-number-mode t)
+
+;;;Set font size to 8pt
+(set-face-attribute 'default nil :height 90)
 
 ;;; IDO
 (setq ido-everywhere t)
@@ -44,7 +56,6 @@
                (file-writable-p buffer-file-name))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
-
 ;;; Remap the backward kill word
 (global-set-key "\C-w" 'backward-kill-word)
 (global-set-key "\C-x\C-k" 'kill-region)
@@ -61,6 +72,12 @@
 (global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
+;;; Comment hotkey (really useful for stupid javascript mode)
+(defun toggle-comment-on-line ()
+  "comment or uncomment current line"
+  (interactive)
+  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+(global-set-key "\M-c" 'toggle-comment-on-line)
 
 ;;; Set tab to 2 spaces
 (add-hook 'after-change-major-mode-hook 
@@ -68,6 +85,9 @@
              (setq-default indent-tabs-mode nil)
              (setq c-basic-indent 2)
              (setq tab-width 2)))
+
+;;; Get Support for 80 column highlighting
+(require 'column-marker)
 
 ;;; vi like % paren matching
 (defun goto-match-paren (arg)
