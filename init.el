@@ -6,6 +6,10 @@
 ;;; Get nxhtml
 (load "/home/rohitjain/.emacs.d/nxhtml/nxhtml/autostart")
 
+;;; Awesome JS mode
+(autoload 'js2-mode "js2" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
 ;;; Paren Matching
 (show-paren-mode 1)
 (setq show-paren-delay 0)
