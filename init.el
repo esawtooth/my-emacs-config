@@ -14,6 +14,14 @@
 (show-paren-mode 1)
 (setq show-paren-delay 0)
 
+;;;(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+(global-set-key (kbd "C-c C->") 'mc/mark-all-like-this-dwim)
+
+
 ;;; Buffer Switching Goodies
 (iswitchb-mode 1) ;;; Get better support for buffer name matching
 ;;; (global-set-key (kbd "<C-tab>") 'bury-buffer)
@@ -22,6 +30,16 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (add-to-list 'load-path "~/.emacs.d/themes/color-theme-6.6.0")
 (add-to-list 'load-path "~/.emacs.d/potpourri")
+
+;;; Multi-Term
+(require 'multi-term)
+(global-set-key (kbd "<f2>") 'multi-term)
+(global-set-key (kbd "<C-next>") 'multi-term-next)
+(global-set-key (kbd "<C-prior>") 'multi-term-prev)
+(setq multi-term-buffer-name "term"
+      multi-term-program "/bin/bash")
+
+
 
 (require 'color-theme)
 (color-theme-initialize)
@@ -107,36 +125,6 @@ vi style of % jumping to matching brace."
         (t (self-insert-command (or arg 1)))))
 (global-set-key (kbd "<f6>") 'goto-match-paren)
 
-;;; Terminal Functionality bound to F2. 
-(require 'term)
-(defun visit-ansi-term ()
-  "If the current buffer is:
-     1) a running ansi-term named *ansi-term*, rename it.
-     2) a stopped ansi-term, kill it and create a new one.
-     3) a non ansi-term, go to an already running ansi-term
-        or start a new one while killing a defunt one"
-  (interactive)
-  (let ((is-term (string= "term-mode" major-mode))
-        (is-running (term-check-proc (buffer-name)))
-        (term-cmd "/bin/bash")
-        (anon-term (get-buffer "*ansi-term*")))
-    (if is-term
-        (if is-running
-            (if (string= "*ansi-term*" (buffer-name))
-                (call-interactively 'rename-buffer)
-              (if anon-term
-                  (switch-to-buffer "*ansi-term*")
-                (ansi-term term-cmd)))
-          (kill-buffer (buffer-name))
-          (ansi-term term-cmd))
-      (if anon-term
-          (if (term-check-proc "*ansi-term*")
-              (switch-to-buffer "*ansi-term*")
-            (kill-buffer "*ansi-term*")
-            (ansi-term term-cmd))
-        (ansi-term term-cmd)))))
-(global-set-key (kbd "<f2>") 'visit-ansi-term)
-
 ;;; This was installed by package-install.el.
 ;;; This provides support for the package system and
 ;;; interfacing with ELPA, the package archive.
@@ -147,9 +135,8 @@ vi style of % jumping to matching brace."
 ;;;     (expand-file-name "~/.emacs.d/elpa/package.el"))
 ;;;  (package-initialize))
 
-;;; (require 'package)
-;;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-
+(require 'package)
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 ;;; Customize incantations
 (custom-set-variables
@@ -161,6 +148,7 @@ vi style of % jumping to matching brace."
  '(global-linum-mode t)
  '(js-auto-indent-flag nil)
  '(js-indent-level 2)
+ '(js2-basic-offset 2)
  '(org-todo-keywords (quote ((sequence "TODO" "DONE" "SHELVED"))))
  '(ourcomments-ido-ctrl-tab t)
  '(show-paren-mode t)
@@ -170,4 +158,4 @@ vi style of % jumping to matching brace."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Inconsolata" :foundry "unknown" :slant normal :weight normal :height 98 :width normal)))))
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 98 :width normal)))))

@@ -1,0 +1,15 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("items.js"
+ (filename . "~/paytm/golden/admin/market-model/sales/order/items.js")
+ (front-context-string . "\": {\n      \n    ")
+ (rear-context-string . "\n    case \"TODAY")
+ (position . 1607))
+("dashboard.js"
+ (filename . "~/paytm/golden/admin/market-merchant/routes/v1/dashboard/dashboard.js")
+ (front-context-string . "\"use strict\";\n\nv")
+ (rear-context-string . "//////////////\n\n")
+ (position . 332))
+)
