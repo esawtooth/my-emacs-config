@@ -56,7 +56,7 @@
 (setq column-number-mode t)
 
 ;;;Set font size to 8pt
-(set-face-attribute 'default nil :height 100)
+(set-face-attribute 'default nil :height 110)
 
 ;;; IDO
 (setq ido-everywhere t)
@@ -80,8 +80,19 @@
 
 ;;; Remap the backward kill word
 (global-set-key "\C-w" 'backward-kill-word)
-(global-set-key "\C-x\C-k" 'kill-region)
+;;; (global-set-key "\C-x\C-k" 'kill-region)
 (global-set-key "\C-c\C-k" 'kill-region)
+
+;;(eval-after-load 'js2-mode
+;;  '(progn
+;;     (define-key js2-mode-map (kbd "TAB") (lambda()
+;;                                            (interactive)
+;;                                            (let ((yas/fallback-behavior 'return-nil))
+;;                                              (unless (yas/expand)
+;;                                                (indent-for-tab-command)
+;;                                                (if (looking-back "^\s*")
+;;                                                    (back-to-indentation))))))))
+
 
 ;;; Remove the tool bar and the scroll bar
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))

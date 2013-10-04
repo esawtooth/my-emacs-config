@@ -4,9 +4,12 @@
 (setq mc/cmds-to-run-for-all
       '(
         Buffer-menu-delete
+        Buffer-menu-execute
         indent-for-tab-command
         ))
 
 (setq mc/cmds-to-run-once
       '(
+        ourcomments-ido-switch-buffer-or-next-entry
+        undefined
         ))
