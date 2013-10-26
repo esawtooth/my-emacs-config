@@ -1,14 +1,14 @@
 ;;; Get jade mode
-(add-to-list 'load-path "~/.emacs.d/modes/jade-mode")
-(require 'jade-mode)
-(add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
+;;(add-to-list 'load-path "~/.emacs.d/modes/jade-mode")
+;;(require 'jade-mode)
+;;(add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
 ;;; Get nxhtml
 (load "/home/rohitjain/.emacs.d/nxhtml/nxhtml/autostart")
 
 ;;; Awesome JS mode
-(autoload 'js2-mode "js2" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+;;(autoload 'js2-mode "js2" nil t)
+;;(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 ;;; Paren Matching
 (show-paren-mode 1)
@@ -68,8 +68,8 @@
 (setq reb-re-syntax 'string)
 
 ;;; JDEE
-(add-to-list 'load-path "~/.emacs.d/jdee-2.4.1/lisp")
-(load "jde")
+;;(add-to-list 'load-path "~/.emacs.d/jdee-2.4.1/lisp")
+;;(load "jde")
 
 ;;; Find files by sudo
 (defadvice ido-find-file (after find-file-sudo activate)
