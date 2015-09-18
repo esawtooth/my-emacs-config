@@ -1,3 +1,0 @@
-* List of TODOs for Emacs Config
-** Need to make yas usable with js2-mode
-** Need to get fuzzy search with ido
